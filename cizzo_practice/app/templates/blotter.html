@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>
+		Blotter
+	</h1>
+	<hr>
+	{% for event in events %}
+	<p>{{event.timestamp}}</p>
+	<div>Location: {{event.general_location.name}}</div>
+	<div>Type: {{event.event_type.name}}</div>
+	<div>Synopsis: {{event.synopsis}}</div>
+	<hr>
+	{% endfor %}
+{% endblock %}

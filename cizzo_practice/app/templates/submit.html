@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1><div style='align-center'>Event Submission Form</div></h1>
+	<form action="" method="post" name="event">
+		{{ form.hidden_tag() }}
+		<table>
+			<tr>
+				<td>Date:</td>
+				<td>{{form.month}} {{form.day(size=2, maxlength=2)}} {{form.year(size=4, maxlength=4)}}</td>
+			</tr>
+			<tr>
+				{% for error in form.month.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          		{% for error in form.day.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          		{% for error in form.year.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          	</tr>
+			<tr>
+				<td>Time:</td>
+				<td>{{form.hour(size=2, maxlength=2)}}:{{form.minute(size=2, maxlength=2)}} {{form.ampm}}
+			<tr>
+			<tr>
+				{% for error in form.hour.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          		{% for error in form.minute.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          	</tr>
+				<td>General Location</td>
+				<td>{{form.genloc}}</td>
+			</tr>
+			<tr>
+				{% for error in form.genloc.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          	</tr>
+			<tr>
+				<td>Incident Type</td>
+				<td>{{form.gentype}}</td>
+			</tr>
+			<tr>
+				{% for error in form.gentype.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          	</tr>
+			<tr>
+				<td>Synopsis</td>
+				<td>{{form.synopsis(rows="6", cols="50")}}
+			</tr>
+			<tr>
+				{% for error in form.synopsis.errors %}
+            	<td><span style="color: red;">[{{ error }}]</span></td>
+          		{% endfor %}
+          	</tr>
+			<tr>
+				<td>{{form.submit}}</td>
+			</tr>
+		</table>
+	</form>
+
+{% endblock %}
